@@ -7,14 +7,14 @@ import {
   faMoneyCheckAlt,
   faSearchDollar,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  FontAwesomeIcon,
-  fontAwesomeIcon,
-} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class APP extends Component {
   state = {
     isLoading: false,
-    invoices: [
+    invoices: [],
+  };
+
+  /*[
       {
         id: "1",
         Vendor: "hankock",
@@ -24,32 +24,37 @@ class APP extends Component {
       },
       {
         id: "2",
-        Vendor: "hankock",
-        Amount: "$18,000",
+        Vendor: "nana",
+        Amount: "$8,000",
         Date: "08/21/2020",
         Invoice: "124",
       },
       {
         id: "3",
-        Vendor: "hankock",
-        Amount: "$18,000",
+        Vendor: "mama",
+        Amount: "$1,000",
         Date: "08/21/2020",
         Invoice: "125",
       },
-    ],
-  };
-
+    ],*/
   remove(id) {
-    console.log(id);
     const upDatedInvoice = [...this.state.invoices].filter(
       (invoice) => invoice.id !== id
     );
     this.setState({ invoices: upDatedInvoice });
   }
 
+  async componentDidMount() {
+    const response = await fetch(
+      "https://erzheff3z7.execute-api.us-east-1.amazonaws.com/Dev"
+    );
+    const body = await response.json();
+    this.setState({ invoices: body, isLoading: false });
+  }
   render() {
     const isLoading = this.state.isLoading;
     const allInvoices = this.state.invoices;
+    console.log("allInvoices", allInvoices);
     let invoices = allInvoices.map((invoice) => {
       return (
         <tr key={invoice.id}>
