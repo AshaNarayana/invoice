@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Table, Button } from "reactstrap";
+
 import {
   faThumbsUp,
   faThumbsDown,
@@ -14,29 +15,32 @@ class APP extends Component {
     invoices: [],
   };
 
-  /*[
+  /*   Add this in dynamoDB -- > 
+  [
       {
         id: "1",
-        Vendor: "hankock",
+        Vendor: "Vendor 1",
         Amount: "$18,000",
         Date: "08/21/2020",
         Invoice: "123",
       },
       {
         id: "2",
-        Vendor: "nana",
+        Vendor: "Vendor 2",
         Amount: "$8,000",
         Date: "08/21/2020",
         Invoice: "124",
       },
       {
         id: "3",
-        Vendor: "mama",
+        Vendor: "Vendor 3",
         Amount: "$1,000",
         Date: "08/21/2020",
         Invoice: "125",
       },
-    ],*/
+    ]   
+    
+    */
   remove(id) {
     const upDatedInvoice = [...this.state.invoices].filter(
       (invoice) => invoice.id !== id
@@ -54,7 +58,6 @@ class APP extends Component {
   render() {
     const isLoading = this.state.isLoading;
     const allInvoices = this.state.invoices;
-    console.log("allInvoices", allInvoices);
     let invoices = allInvoices.map((invoice) => {
       return (
         <tr key={invoice.id}>
@@ -95,13 +98,13 @@ class APP extends Component {
               onClick={() => this.remove(invoice.id)}
             >
               <FontAwesomeIcon icon={faSearchDollar} />
-              ???
+              More info???
             </Button>
           </td>
           <td>
             <Button className="btn btn-lg btn-info">
               <FontAwesomeIcon icon={faImage} />
-              ??Image
+              Image
             </Button>
           </td>
         </tr>
