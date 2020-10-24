@@ -1,1 +1,1 @@
-THis is AWS serverless app
+React.js APP to serve invoice functionalities
