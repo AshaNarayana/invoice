@@ -9,6 +9,10 @@ This is simple ReactJs invoice application which fetches data from dynamoDb usin
 - yarn install
 - npm start
 
+
+
+# IGNORE BELOW STEPS
+
 ## Pre-requisites
 
 1.  Create dynamoDB in AWS with following details
