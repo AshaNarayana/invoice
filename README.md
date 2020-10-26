@@ -14,29 +14,25 @@ This is simple ReactJs invoice application which fetches data from dynamoDb usin
 1.  Create dynamoDB in AWS with following details
 
          - TableName - Invoicetable
-          - Content as commented in App.js file
+         - Add table items as commented in App.js file
 
 2.  Create node.js lambda function fetchDynamoDb, add following code and deploy
-    `const AWS = require('aws-sdk')
-    const client = new AWS.DynamoDB.DocumentClient({region : 'us-east-1'})
-    exports.handler = function(event, context,callback){
-    let scanningParams = {
-    TableName: 'InvoiceTable'
-    }
-
-         client.scan(scanningParams,function(err,data){
-
+    `
+             const AWS = require('aws-sdk')
+             const client = new AWS.DynamoDB.DocumentClient({region : 'us-east-1'})
+             exports.handler = function(event, context,callback){
+             let scanningParams = {
+             TableName: 'InvoiceTable'
+             }
+             client.scan(scanningParams,function(err,data){
                  if(err){
-
                      callback(err,null)
                  }
                  else{
-
                      callback(null,data.Items)
                  }
-
-         })
-         };
+               })
+             };
           `
 
 3.  Create get method in AWS apiGateway to call lambda function
