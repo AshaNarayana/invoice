@@ -50,9 +50,10 @@ class APP extends Component {
 
   async componentDidMount() {
     const response = await fetch(
-      "https://erzheff3z7.execute-api.us-east-1.amazonaws.com/Dev"
+      "https://jp8yckany4.execute-api.us-east-1.amazonaws.com/dev"
     );
     const body = await response.json();
+
     this.setState({ invoices: body, isLoading: false });
   }
   render() {
